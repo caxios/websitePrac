@@ -6,17 +6,14 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Writepostpage from './pages/Writepostpage';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={ <App /> }>
-        </Route>
-      </Routes>
-    </Router> 
-  </React.StrictMode>,
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />} /> {/*this is my homepage route*/}
+      <Route path="writepost" element={<Writepostpage />} />
+    </Routes>
+  </Router>,
   document.getElementById('root')
 );
-
-

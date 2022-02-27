@@ -5,7 +5,7 @@ import PostBoard from '../components/PostBoard'
 import SideMenu from '../components/SideMenu'
 import BestPost from '../components/BestPost'
 
-import {BrowserRouter as Router} from "react-router-dom"
+//import {Route, Routes} from "react-router-dom";
 
 const BodyContainer = styled.div`
     padding-top: 100px;
@@ -18,10 +18,7 @@ const Homepage = () => {
     <div>
         <Navbar/>
         <BodyContainer>
-            <Router>
-                <SideMenu/>
-
-            </Router>
+            <SideMenu/>
             <PostBoard/>
             <BestPost/>
         </BodyContainer>
