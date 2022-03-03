@@ -6,10 +6,10 @@ import TextField from '@mui/material/TextField';
 
 const WritePost = () => {
     var initLen = 990
-    const handleLen = (...args)=>{
-        return args
-    }
-    //const [textLen, setTextLen] = useState(initLen)
+    // const handleLen = (...args)=>{
+    //     return args
+    // }
+    const [textLen, setTextLen] = useState(initLen)
     return(
     <Stack spacing={2} direction="column">
         <Box
@@ -22,10 +22,9 @@ const WritePost = () => {
         noValidate
         autoComplete="off"
         >
-        {/* need to make event that check how many text can be written */}
         <TextField
           id="filled-textarea"
-          label={"Left text : " + handleLen()}
+          label={"Left text : " + textLen}
           placeholder="Write Post"
           style = {{width: 800}}
           inputProps={{ maxLength: initLen }}
@@ -33,9 +32,9 @@ const WritePost = () => {
           variant="outlined"
           onChange={(e)=>{
               var currentTextlength = e.target.value.length
-              //setTextLen(textLen-currentTextlength)
-              console.log(initLen - currentTextlength)
-              handleLen(initLen - currentTextlength)
+              setTextLen(initLen-currentTextlength)
+              //console.log(initLen - currentTextlength)
+              //handleLen(initLen - currentTextlength)
           }}
         />
         </Box>
