@@ -5,8 +5,6 @@ import PostBoard from '../components/PostBoard'
 import SideMenu from '../components/SideMenu'
 import BestPost from '../components/BestPost'
 
-//import {Route, Routes} from "react-router-dom";
-
 const BodyContainer = styled.div`
     padding-top: 100px;
     display: flex;
