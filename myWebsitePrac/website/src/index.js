@@ -7,13 +7,17 @@ import {
   Route,
 } from "react-router-dom";
 import Writepostpage from './pages/Writepostpage';
+import { Provider } from 'react-redux'
+import store from './store'
 
 ReactDOM.render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} /> {/*this is my homepage route*/}
-      <Route path="writepost" element={<Writepostpage />} />
-    </Routes>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} /> {/*this is my homepage route*/}
+        <Route path="writepost" element={<Writepostpage />} />
+      </Routes>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );

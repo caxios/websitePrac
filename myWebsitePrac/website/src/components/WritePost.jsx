@@ -5,6 +5,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import styled from 'styled-components'
 import PostBoard from './PostBoard';
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  getPost,
+  selectPost,
+} from './PostSlice'
 
 const Container = styled.div`
     padding-top: 100px;
@@ -12,8 +17,20 @@ const Container = styled.div`
 
 const WritePost = () => {
     var initLen = 990
+    //const post = useSelector(selectPost)
+    const dispatch = useDispatch()
+
+
     const [textLen, setTextLen] = useState(initLen)
     const [postContent, setPostContent] = useState()
+
+    const savePostClicked = () => {
+        dispatch(
+        getPost({
+            content:postContent
+        })
+        )
+      }
 
     return(
     <Stack spacing={2} direction="column">
@@ -38,15 +55,16 @@ const WritePost = () => {
         onChange={(e)=>{
             var currentTextlength = e.target.value.length
             setTextLen(initLen-currentTextlength)
+            //dispatch(getPost)(e.target.value)
             setPostContent(e.target.value)
         }}
         />
         </Box>
-        <Button variant="text" type="submit">
+        <Button variant="text" type="submit" onClick={savePostClicked}>
                 Submit
         </Button>
         <Container>
-            <PostBoard post={postContent}/>
+            <PostBoard/>
         </Container>
     </Stack>
     )

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import pushData from '../dummydata'
-// import {
-//     BrowserRouter as Router,
-//     Routes,
-//     Route,
-//   } from "react-router-dom";
+import {
+    Link
+  } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { selectPost } from './PostSlice';
 
 const Container = styled.div`
     width: 300px;
@@ -26,8 +26,8 @@ const TopLine = styled.div`
 `
 
 const PostBoard = () => {
-    let datas = pushData()
-
+    //let datas = pushData()
+    const posts = useSelector(selectPost)
     return (
         <Container>
             <TopLine>
@@ -35,7 +35,7 @@ const PostBoard = () => {
                 <AddPost href='#'>more</AddPost>
             </TopLine>
             <ListContainer>
-                {datas.map(data=><PostList><Title href="#">{data.title}</Title></PostList>)}
+                {posts.map(post=><PostList><Title href="#">{post}</Title></PostList>)}
             </ListContainer>
         </Container>
     );
