@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import PostBoard from './PostBoard';
 import { useSelector, useDispatch } from 'react-redux'
 import {
-  getPost,
+  setPost,
   selectPost,
 } from './PostSlice'
 
@@ -19,18 +19,14 @@ const WritePost = () => {
     var initLen = 990
     //const post = useSelector(selectPost)
     const dispatch = useDispatch()
-
+    const posts = useSelector(state => state.posts)
 
     const [textLen, setTextLen] = useState(initLen)
     const [postContent, setPostContent] = useState()
 
     const savePostClicked = () => {
-        dispatch(
-        getPost({
-            content:postContent
-        })
-        )
-      }
+        dispatch(setPost(postContent))
+    }
 
     return(
     <Stack spacing={2} direction="column">
@@ -62,6 +58,12 @@ const WritePost = () => {
         </Box>
         <Button variant="text" type="submit" onClick={savePostClicked}>
                 Submit
+        </Button>
+        <Button variant="text" type="submit" onClick={()=>console.log(postContent)}>
+                Log
+        </Button>
+        <Button variant="text" type="submit" onClick={()=>console.log(posts)}>
+                Show Redux data
         </Button>
         <Container>
             <PostBoard/>

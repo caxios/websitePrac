@@ -26,8 +26,9 @@ const TopLine = styled.div`
 `
 
 const PostBoard = () => {
-    //let datas = pushData()
-    const posts = useSelector(selectPost)
+    let datas = pushData()
+    const posts = useSelector(state => state.value)
+    console.log(posts)
     return (
         <Container>
             <TopLine>
@@ -35,7 +36,7 @@ const PostBoard = () => {
                 <AddPost href='#'>more</AddPost>
             </TopLine>
             <ListContainer>
-                {posts.map(post=><PostList><Title href="#">{post}</Title></PostList>)}
+                {posts?.map(post=><PostList><Title href="#">{post}</Title></PostList>)}
             </ListContainer>
         </Container>
     );
