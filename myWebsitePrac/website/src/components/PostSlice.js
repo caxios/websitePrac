@@ -16,6 +16,6 @@ export const postSlice = createSlice({
 
 export const { setPost } = postSlice.actions
 
-//export const selectPost = state => state.posts.value this can be omitted. 
+//export const selectPost = state => state.posts this can be omitted. 
 
 export default postSlice.reducer

@@ -4,7 +4,8 @@ import Navbar from '../components/Navbar'
 import PostBoard from '../components/PostBoard'
 import SideMenu from '../components/SideMenu'
 import BestPost from '../components/BestPost'
-
+import Button from '@mui/material/Button';
+import { useSelector } from 'react-redux'
 const BodyContainer = styled.div`
     padding-top: 100px;
     display: flex;
@@ -12,6 +13,9 @@ const BodyContainer = styled.div`
 `
 
 const Homepage = () => {
+
+    const posts = useSelector(state=>state.posts)
+
     return (
     <div>
         <Navbar/>
@@ -20,6 +24,9 @@ const Homepage = () => {
             <PostBoard/>
             <BestPost/>
         </BodyContainer>
+        {/* <Button variant="text" type="submit" onClick={()=>console.log(posts)}>
+                Show Redux data
+        </Button> */}
     </div>
     );
   };

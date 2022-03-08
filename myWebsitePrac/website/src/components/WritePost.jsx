@@ -59,12 +59,12 @@ const WritePost = () => {
         <Button variant="text" type="submit" onClick={savePostClicked}>
                 Submit
         </Button>
-        <Button variant="text" type="submit" onClick={()=>console.log(postContent)}>
+        {/* <Button variant="text" type="submit" onClick={()=>console.log(postContent)}>
                 Log
         </Button>
         <Button variant="text" type="submit" onClick={()=>console.log(posts)}>
                 Show Redux data
-        </Button>
+        </Button> */}
         <Container>
             <PostBoard/>
         </Container>

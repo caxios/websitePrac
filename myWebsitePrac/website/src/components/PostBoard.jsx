@@ -5,7 +5,6 @@ import {
     Link
   } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { selectPost } from './PostSlice';
 
 const Container = styled.div`
     width: 300px;
@@ -26,8 +25,8 @@ const TopLine = styled.div`
 `
 
 const PostBoard = () => {
-    let datas = pushData()
-    const posts = useSelector(state => state.value)
+    //let datas = pushData()
+    const posts = useSelector(state => state.posts)
     console.log(posts)
     return (
         <Container>
@@ -36,7 +35,7 @@ const PostBoard = () => {
                 <AddPost href='#'>more</AddPost>
             </TopLine>
             <ListContainer>
-                {posts?.map(post=><PostList><Title href="#">{post}</Title></PostList>)}
+                {posts?.map(post=><PostList><Title href="#">{post.slice(0, 20)}</Title></PostList>)}
             </ListContainer>
         </Container>
     );
