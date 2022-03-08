@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import pushData from '../dummydata'
 import {
     Link
   } from "react-router-dom";
@@ -25,7 +24,6 @@ const TopLine = styled.div`
 `
 
 const PostBoard = () => {
-    //let datas = pushData()
     const posts = useSelector(state => state.posts)
     console.log(posts)
     return (
@@ -35,7 +33,7 @@ const PostBoard = () => {
                 <AddPost href='#'>more</AddPost>
             </TopLine>
             <ListContainer>
-                {posts?.map(post=><PostList><Title href="#">{post.slice(0, 20)}</Title></PostList>)}
+                {posts?.map(post=><PostList><Title href="#">{post.content.slice(0, 20)}</Title></PostList>)}
             </ListContainer>
         </Container>
     );

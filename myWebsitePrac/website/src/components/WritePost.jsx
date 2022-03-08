@@ -19,13 +19,18 @@ const WritePost = () => {
     var initLen = 990
     //const post = useSelector(selectPost)
     const dispatch = useDispatch()
-    const posts = useSelector(state => state.posts)
+    //const posts = useSelector(state => state.posts)
 
     const [textLen, setTextLen] = useState(initLen)
-    const [postContent, setPostContent] = useState()
+    var [postContent, setPostContent] = useState()
+    var [id, setId] = useState(0)
 
     const savePostClicked = () => {
-        dispatch(setPost(postContent))
+        setId(id=id+1)
+        dispatch(setPost({
+            id:id,
+            content:postContent
+        }))
     }
 
     return(
@@ -72,4 +77,4 @@ const WritePost = () => {
     )
   }
   
-  export default WritePost;
+export default WritePost;
