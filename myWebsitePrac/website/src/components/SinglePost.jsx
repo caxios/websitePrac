@@ -1,38 +1,23 @@
-import useSelector from 'react-redux'
+import { useSelector } from 'react-redux';
 import React from 'react'
 import Modal from 'react-modal'
 
-const SinglePost = ()=>{
+const SinglePost = (props)=>{
     
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const posts = useSelector(state=>state.posts)
 
-    function openModal() {
-      setIsOpen(true);
-    }
-  
-    function afterOpenModal() {
-      // references are now sync'd and can be accessed.
-      subtitle.style.color = '#f00';
-    }
-  
-    function closeModal() {
-      setIsOpen(false);
-    }
-  
-    return (
-      <div>
-        <button onClick={openModal}>Open Modal</button>
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          {/** 각각의 게시물이 모달에 표시 되어야 한다. */}
-        </Modal>
-      </div>
-    );
+    return(
+        <div>
+            {posts?.map(post=>{
+               if(post.id==props.id){
+                <Modal>{posts.content}</Modal>
+               }else{
+                   <h1>No matched post exists!</h1>
+               }
+            })}
+        </div>
+    )
+
   }
 
 export default SinglePost;

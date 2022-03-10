@@ -13,8 +13,6 @@ const ListContainer = styled.ul`
 const PostList = styled.li`
     padding-top: 15px;
 `   
-const Title = styled.a`
-`
 const AddPost = styled.a` 
     padding-left: 10px;
     padding-top: 40px;
@@ -33,7 +31,7 @@ const PostBoard = () => {
                 <AddPost href='#'>more</AddPost>
             </TopLine>
             <ListContainer>
-                {posts?.map(post=><PostList><Title href="#">{post.content.slice(0, 20)}</Title></PostList>)}
+                {posts?.map(post=><PostList><Link to={`post/${post.id}`}>{post.content.slice(0, 20)}</Link></PostList>)}
             </ListContainer>
         </Container>
     );

@@ -9,6 +9,7 @@ import {
 import Writepostpage from './pages/Writepostpage';
 import { Provider } from 'react-redux'
 import store from './store'
+import SinglePost from './components/SinglePost';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} /> {/*this is my homepage route*/}
         <Route path="writepost" element={<Writepostpage />} />
+        <Route path="post/:id" element={<SinglePost />} />
       </Routes>
     </Router>
   </Provider>,
