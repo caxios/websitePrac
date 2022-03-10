@@ -10,6 +10,7 @@ import {
   setPost,
   selectPost,
 } from './PostSlice'
+import PostData from "../post";
 
 const Container = styled.div`
     padding-top: 100px;
@@ -24,13 +25,24 @@ const WritePost = () => {
     const [textLen, setTextLen] = useState(initLen)
     var [postContent, setPostContent] = useState()
     var [id, setId] = useState(0)
-
+    var data = {
+        id:id,
+        postConent:postContent
+    }
     const savePostClicked = () => {
         setId(id=id+1)
         dispatch(setPost({
             id:id,
             content:postContent
         }))
+        PostData.createPost(data)
+        .then(response => {
+          //setSubmitted(true);
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
 
     return(
