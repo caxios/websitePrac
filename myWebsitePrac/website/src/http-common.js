@@ -1,7 +1,6 @@
 import axios from "axios";
-
 export default axios.create({
-  baseURL: "https://data.mongodb-api.com/app/firstweb-fuuot/endpoint/data",
+  baseURL: "http://localhost:8080/api",
   headers: {
     "Content-type": "application/json"
   }

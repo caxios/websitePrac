@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import styled from 'styled-components'
 import PostBoard from './PostBoard';
-import { useSelector, useDispatch } from 'react-redux'
-import {
-  setPost,
-  selectPost,
-} from './PostSlice'
-import PostData from "../post";
+import {useDispatch} from 'react-redux'
+import {setPost} from './PostSlice'
+import axios from 'axios'
 
 const Container = styled.div`
     padding-top: 100px;
@@ -18,9 +15,7 @@ const Container = styled.div`
 
 const WritePost = () => {
     var initLen = 990
-    //const post = useSelector(selectPost)
     const dispatch = useDispatch()
-    //const posts = useSelector(state => state.posts)
 
     const [textLen, setTextLen] = useState(initLen)
     var [postContent, setPostContent] = useState()
@@ -35,14 +30,14 @@ const WritePost = () => {
             id:id,
             content:postContent
         }))
-        PostData.createPost(data)
-        .then(response => {
-          //setSubmitted(true);
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+        axios.post('mongodb+srv://heenbee:<yena1234>@websiteprac.esozc.mongodb.net/websitePrac?retryWrites=true&w=majority', data)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
     }
 
     return(
@@ -68,7 +63,6 @@ const WritePost = () => {
         onChange={(e)=>{
             var currentTextlength = e.target.value.length
             setTextLen(initLen-currentTextlength)
-            //dispatch(getPost)(e.target.value)
             setPostContent(e.target.value)
         }}
         />
@@ -76,12 +70,6 @@ const WritePost = () => {
         <Button variant="text" type="submit" onClick={savePostClicked}>
                 Submit
         </Button>
-        {/* <Button variant="text" type="submit" onClick={()=>console.log(postContent)}>
-                Log
-        </Button>
-        <Button variant="text" type="submit" onClick={()=>console.log(posts)}>
-                Show Redux data
-        </Button> */}
         <Container>
             <PostBoard/>
         </Container>
