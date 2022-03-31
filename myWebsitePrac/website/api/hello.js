@@ -1,17 +1,7 @@
-const http = require('http');
+const express = require('express')
+const app = express()
 
-// Create a local server to receive data from
-const server = http.createServer((req, res) => {
-//   res.writeHead(200, { 'Content-Type': 'application/json' });
-//   res.end(JSON.stringify({
-//     data: 'Hello World!'
-//   }));
-  if(req.url == '/'){
-    res.end("Welcome!")
-  }
-  if(req.url == '/about'){
-    res.end("This is practice webpage!")
-}
-});
-
-server.listen(8000);
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
